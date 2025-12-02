@@ -26,6 +26,5 @@ export class ProdutosComponent {
       next: (lista) => this.produtos = lista,
       error: (erro) => console.error(erro)
     })
-
   }
 }
