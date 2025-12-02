@@ -4,6 +4,7 @@ import { Navbar } from './components/navbar/navbar.component';
 import { Footer } from './components/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { ProdutosService } from './services/produtos.service';
 
 
 @Component({
