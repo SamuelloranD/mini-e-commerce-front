@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #0f172a !important;
+  color: #e2e8f0;
+}
+
+.card {
+  width: 100%;
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155 !important; 
+}
+
+.card-img-top {
+  height: 170px;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  height: 68px;
+  overflow: hidden;
+}
+
+.card-body ul {
+  font-size: 0.85rem;
+}
+
+.row.g-4 {
+  --bs-gutter-y: 1rem;
+  --bs-gutter-x: 1rem;
+}
