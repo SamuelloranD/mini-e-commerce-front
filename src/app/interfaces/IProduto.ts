@@ -1,7 +1,7 @@
 export interface IProduto {
     id: number,
-    name: String,
+    name: string,
     price: number,
-    description: String,
-    img: String
+    description: string,
+    img: string
 }
