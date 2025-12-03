@@ -1,24 +1,5 @@
-<div class="container">
-  <div class="row g-4">
-
-    <div class="col-md-4" *ngFor="let p of produtos">
-      <div class="card bg-dark text-light shadow">
-
-        <img [src]="p.img" class="card-img-top" alt="Imagem do produto">
-
-        <div class="card-body">
-          <h5 class="card-title">{{ p.name }}</h5>
-          <p class="card-text">{{ p.description }}</p>
-
-          <button class="btn btn-primary w-100 mb-3">
-            Carrinho
-          </button>
-
-          <ul class="list-unstyled">
-            <li><strong>Preço:</strong> R$ {{ p.price }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container mt-4">
+  <app-tabela-produtos
+    [produtos]="produtos"
+  ></app-tabela-produtos>
 </div>
