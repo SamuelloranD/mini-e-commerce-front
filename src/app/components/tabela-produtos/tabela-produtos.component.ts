@@ -7,9 +7,25 @@ import { IProduto } from '../../interfaces/IProduto';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './tabela-produtos.component.html',
-  styleUrls: ['./tabela-produtos.component.css']
+  styleUrl: './tabela-produtos.component.css'
 })
 export class TabelaProdutosComponent {
 
   @Input() produtos: IProduto[] = [];
+
+  @Output() editar = new EventEmitter<number>();  
+  @Output() excluir = new EventEmitter<number>(); 
+  @Output() adicionarCarrinho = new EventEmitter<IProduto>();
+
+  onEditar(id: number) {
+    this.editar.emit(id);
+  }
+
+  onExcluir(id: number) {
+    this.excluir.emit(id);
+  }
+
+  onAdicionar(produto: IProduto) {
+    this.adicionarCarrinho.emit(produto);
+  }
 }

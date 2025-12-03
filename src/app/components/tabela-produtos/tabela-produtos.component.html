@@ -21,9 +21,9 @@
       <td>R$ {{ p.price | number:'1.2-2' }}</td>
       <td>{{ p.description }}</td>
       <td>
-        <button class="btn btn-sm btn-primary me-2">Editar</button>
-        <button class="btn btn-sm btn-danger me-2">Excluir</button>
-        <button class="btn btn-sm btn-success">Carrinho</button>
+        <button class="btn btn-sm btn-primary me-2" (click)="onEditar(p.id)">Editar</button>
+        <button class="btn btn-sm btn-danger me-2" (click)="onExcluir(p.id)">Excluir</button>
+        <button class="btn btn-sm btn-success" (click)="onAdicionar(p)">Carrinho</button>
       </td>
     </tr>
   </tbody>
