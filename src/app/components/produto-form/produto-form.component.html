@@ -1,0 +1,97 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card bg-dark text-light">
+        <div class="card-header">
+          <h3 class="mb-0">{{ isEditMode ? 'Editar Produto' : 'Novo Produto' }}</h3>
+        </div>
+        
+        <div class="card-body">
+          <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+            
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome do Produto *</label>
+              <input type="text" 
+                     id="name" 
+                     class="form-control"
+                     formControlName="name"
+                     [class.is-invalid]="name?.invalid && name?.touched">
+              
+              <div class="invalid-feedback" *ngIf="name?.invalid && name?.touched">
+                <span *ngIf="name?.errors?.['required']">Nome é obrigatório</span>
+                <span *ngIf="name?.errors?.['minlength']">
+                  Nome deve ter pelo menos 3 caracteres
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Preço *</label>
+              <div class="input-group">
+                <span class="input-group-text">R$</span>
+                <input type="number" 
+                       id="price" 
+                       class="form-control"
+                       formControlName="price"
+                       step="0.01"
+                       min="0.01"
+                       [class.is-invalid]="price?.invalid && price?.touched">
+              </div>
+              
+              <div class="invalid-feedback" *ngIf="price?.invalid && price?.touched">
+                <span *ngIf="price?.errors?.['required']">Preço é obrigatório</span>
+                <span *ngIf="price?.errors?.['min']">
+                  Preço deve ser maior que zero
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Descrição *</label>
+              <textarea id="description" 
+                        class="form-control"
+                        formControlName="description"
+                        rows="3"
+                        [class.is-invalid]="description?.invalid && description?.touched">
+              </textarea>
+              
+              <div class="invalid-feedback" *ngIf="description?.invalid && description?.touched">
+                <span *ngIf="description?.errors?.['required']">Descrição é obrigatória</span>
+                <span *ngIf="description?.errors?.['minlength']">
+                  Descrição deve ter pelo menos 10 caracteres
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="img" class="form-label">URL da Imagem *</label>
+              <input type="text" 
+                     id="img" 
+                     class="form-control"
+                     formControlName="img"
+                     [class.is-invalid]="img?.invalid && img?.touched">
+              
+              <div class="invalid-feedback" *ngIf="img?.invalid && img?.touched">
+                <span *ngIf="img?.errors?.['required']">URL da imagem é obrigatória</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" 
+                      class="btn btn-secondary"
+                      (click)="onCancel()">
+                Cancelar
+              </button>
+              
+              <button type="submit" 
+                      class="btn btn-primary"
+                      [disabled]="produtoForm.invalid">
+                {{ isEditMode ? 'Atualizar' : 'Salvar' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
