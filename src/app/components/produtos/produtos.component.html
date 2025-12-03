@@ -5,56 +5,5 @@
     (excluir)="excluirProduto($event)"
     (adicionarCarrinho)="adicionarAoCarrinho($event)"
   ></app-tabela-produtos>
-<div class="modal fade" id="modalEditar" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-light">
-
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Produto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <form>
-
-          <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input type="text" class="form-control"
-                   [(ngModel)]="produtoEditando.name"
-                   name="name">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Preço</label>
-            <input type="number" class="form-control"
-                   [(ngModel)]="produtoEditando.price"
-                   name="price">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Descrição</label>
-            <textarea class="form-control"
-                      [(ngModel)]="produtoEditando.description"
-                      name="description"></textarea>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">URL da Imagem</label>
-            <input type="text" class="form-control"
-                   [(ngModel)]="produtoEditando.img"
-                   name="img">
-          </div>
-
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button class="btn btn-primary" (click)="salvarEdicao()">Salvar</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 </div>

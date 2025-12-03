@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IProduto } from '../../interfaces/IProduto';
-
 import { ProdutosService } from '../../services/produtos.service';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-editar-produto',
@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule
   ],
   templateUrl: './editar-produto.component.html',
-  styleUrls: ['./editar-produto.component.css']
+  styleUrls: ['./editar-produto.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditarProdutoComponent implements OnInit {
 
@@ -23,27 +24,37 @@ export class EditarProdutoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: ProdutosService,
-    private dialogRef: MatDialogRef<EditarProdutoComponent>,
+    public dialogRef: MatDialogRef<EditarProdutoComponent>,
     @Inject(MAT_DIALOG_DATA) public produto: IProduto
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nome: [this.produto.name, Validators.required],
-      preco: [this.produto.price, Validators.required],
-      descricao: [this.produto.description],
-      imagem: [this.produto.img]
+      name: [this.produto.name, Validators.required],
+      price: [this.produto.price, Validators.required],
+      description: [this.produto.description],
+      img: [this.produto.img]
     });
   }
 
-  salvar() {
-    const atualizado: IProduto = {
-      ...this.produto,
-      ...this.form.value
-    };
+salvar() {
+    if (this.form.invalid) {
+      return;
+    }
 
-    this.service.update(atualizado).subscribe(() => {
-      this.dialogRef.close(true);
+    const atualizado: IProduto = {
+      ...this.produto,
+      ...this.form.value
+    };
+    this.service.update(atualizado).subscribe({
+        next: () => {
+            console.log('✅ Produto atualizado com sucesso na API.');
+            this.dialogRef.close(true);
+        },
+        error: (err) => {
+            console.error('❌ ERRO ao salvar produto na API:', err);
+            this.dialogRef.close(false);
+        }
     });
-  }
+  }
 }

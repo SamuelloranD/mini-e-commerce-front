@@ -1,32 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from '../../services/produtos.service';
 import { IProduto } from '../../interfaces/IProduto';
 import { CommonModule } from '@angular/common';
 import { TabelaProdutosComponent } from '../tabela-produtos/tabela-produtos.component';
 import { FormsModule } from '@angular/forms';
-
-declare var bootstrap: any;
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { EditarProdutoComponent } from '../editar-produto/editar-produto.component';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [CommonModule, TabelaProdutosComponent, FormsModule],
+  imports: [
+    CommonModule,
+    TabelaProdutosComponent,
+    FormsModule,
+    MatDialogModule
+  ],
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.css'
 })
-export class ProdutosComponent {
+export class ProdutosComponent implements OnInit {
 
   produtos: IProduto[] = []
-  produtoEditando: IProduto = {
-    id: 0,
-    name: '',
-    price: 0,
-    description: '',
-    img: ''
-  };
 
-  constructor(private produtoService: ProdutosService)
-  {}
+
+  constructor(
+    private produtoService: ProdutosService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.obterTodosProdutos();
@@ -40,26 +41,22 @@ export class ProdutosComponent {
   }
 
   editarProduto(id: number) {
-    const prod = this.produtos.find(p => p.id === id);
-    if (!prod) return;
+    const produtoAEditar = this.produtos.find(p => p.id === id);
+    if (!produtoAEditar) return;
 
-    this.produtoEditando = { ...prod };
+    const dialogRef = this.dialog.open(EditarProdutoComponent, {
+      width: '600px',
 
-    const modal = new bootstrap.Modal('#modalEditar');
-    modal.show();
-  }
+      data: { ...produtoAEditar },
+      panelClass: 'custom-modal'
+    });
 
-  salvarEdicao() {
-    this.produtoService.update(this.produtoEditando).subscribe({
-      next: () => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
 
-        const index = this.produtos.findIndex(p => p.id === this.produtoEditando.id);
-        this.produtos[index] = { ...this.produtoEditando };
+      if (result) {
 
-        const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditar'));
-        modal.hide();
-      },
-      error: err => console.error(err)
+        this.obterTodosProdutos();
+      }
     });
   }
 
@@ -73,7 +70,6 @@ export class ProdutosComponent {
     });
   }
 
-  // IMPLEMENTAR AMANHA
   adicionarAoCarrinho(p: IProduto) {
     console.log('Adicionar ao carrinho:', p);
   }

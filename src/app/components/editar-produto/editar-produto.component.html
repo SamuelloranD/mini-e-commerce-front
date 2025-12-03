@@ -1,0 +1,39 @@
+<div class="custom-dialog-wrapper">
+    <h2 mat-dialog-title>Editar Produto</h2>
+    <div mat-dialog-content>
+        <form [formGroup]="form"> 
+
+            <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control" formControlName="name">
+                <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+                    Nome é obrigatório.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Preço</label>
+                <input type="number" class="form-control" formControlName="price">
+                <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched" class="text-danger">
+                    Preço é obrigatório.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descrição</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">URL da Imagem</label>
+                <input type="text" class="form-control" formControlName="img">
+            </div>
+
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancelar</button>
+        <button mat-button color="primary" (click)="salvar()" [disabled]="form.invalid">Salvar</button>
+    </div>
+</div>

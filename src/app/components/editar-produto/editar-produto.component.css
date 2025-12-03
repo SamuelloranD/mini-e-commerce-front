@@ -1,0 +1,28 @@
+.custom-modal .custom-dialog-wrapper {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.custom-modal .custom-dialog-wrapper h2[mat-dialog-title] {
+  background: #0f172a;
+  color: white;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  border-bottom: 1px solid #334155;
+}
+
+.custom-modal .custom-dialog-wrapper div[mat-dialog-content] {
+  background: #1e293b;
+  padding: 2rem;
+}
+
+.custom-modal .custom-dialog-wrapper div[mat-dialog-actions] {
+  background: #0f172a;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #334155;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
