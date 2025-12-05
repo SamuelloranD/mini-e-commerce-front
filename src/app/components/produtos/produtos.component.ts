@@ -4,6 +4,7 @@ import { IProduto } from '../../interfaces/IProduto';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ProdutoTabelaComponent } from '../produto-tabela/produto-tabela.component';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-produtos',
@@ -17,7 +18,8 @@ export class ProdutosComponent {
 
   constructor(
     private produtoService: ProdutosService,
-    private router: Router
+    private router: Router,
+    private carrinhoService: CarrinhoService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,6 @@ export class ProdutosComponent {
   }
 
   onAdicionarCarrinho(produto: IProduto): void {
-    console.log('Adicionar ao carrinho:', produto);
+    this.carrinhoService.adicionarItem(produto);
   }
 }
