@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Coverage reports (testes unitários)
+coverage/
+*.lcov
+html-report/
