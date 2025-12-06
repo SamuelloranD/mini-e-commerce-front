@@ -1,27 +1,121 @@
-# MeuProjeto
+# 🛒 Mini E-Commerce Angular - Projeto Final
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+[![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com/)
+[![Coverage](https://img.shields.io/badge/Coverage-86.84%25-brightgreen?style=for-the-badge)](https://angular.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-## Development server
+**Funcionalidades principais:**
+- ✅ CRUD completo de produtos com Reactive Forms
+- ✅ Carrinho de compras com persistência em localStorage
+- ✅ Contador dinâmico no navbar em tempo real
+- ✅ Interface responsiva com Bootstrap 5
+- ✅ 33 testes unitários com 86.84% de cobertura
+- ✅ API REST completa com Spring Boot
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🏗️ Arquitetura Full-Stack
 
-## Code scaffolding
+### Frontend (Angular)
+```text
+src/
+├── components/ # Componentes Angular
+├── services/ # Serviços HTTP e estado
+├── interfaces/ # Tipos TypeScript
+└── environments/ # Configurações
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🔗 Integração Backend-Frontend
 
-## Build
+### 1. Clone ambos os repositórios
+```bash
+# Frontend
+git clone https://github.com/SamuelloranD/mini-e-commerce-front
+cd mini-e-commerce-front
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Backend (em outra pasta)
+git clone https://github.com/SamuelloranD/mini-e-commerce-backk
+```
 
-## Running unit tests
+### 2. Execute o Backend
+```bash
+# API disponível em: http://localhost:8080
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 3. Execute o Frontend
+```bash
+cd mini-e-commerce-front
+npm install
+ng serve
+# App disponível em: http://localhost:4200
+```
 
-## Running end-to-end tests
+### 4. Configure a conexão
+O frontend já está configurado para consumir a API local:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/produtos'
+};
+```
 
-## Further help
+## 🧪 Testes Unitários - BÔNUS CONQUISTADO 🏆
+Resultados:
+✅ 33 testes unitários implementados
+✅ 86.84% de cobertura de código
+✅ 100% cobertura em branches (decisões lógicas)
+✅ 83.78% cobertura em funções
+✅ 86.95% cobertura em linhas
+✅ TODOS os testes PASSANDO
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🔧 Tecnologias Utilizadas
+
+### Frontend
+*   Framework: Angular 18
+*   Linguagem: TypeScript 5.3
+*   UI: Bootstrap 5.3 + Bootstrap Icons
+*   Estado: RxJS + BehaviorSubject
+*   Persistência: LocalStorage API
+*   HTTP: Angular HttpClient
+*   Forms: Reactive Forms
+*   Testes: Jasmine + Karma
+
+## 📚 Padrões e Boas Práticas
+
+### Arquitetura Limpa
+```typescript
+// Frontend: Separação clara de responsabilidades
+ProductService → Apenas chamadas HTTP (GET, POST, PUT, DELETE)
+CartService → Apenas gerenciamento de estado (LocalStorage, cálculos)
+
+// Backend: Arquitetura em camadas
+Controller → Service → Repository → Database
+```
+
+### Tipagem Forte
+*   TypeScript no frontend com zero uso de `any`
+*   
+## 🚀 Scripts Disponíveis
+
+### Frontend
+
+| Comando | Descrição |
+| :--- | :--- |
+| `ng serve` | Inicia servidor de desenvolvimento |
+| `ng build` | Compila para produção |
+| `ng test` | Executa testes unitários |
+| `ng test --code-coverage` | Executa testes com relatório de coverage |
+
+## 👨‍💻 Autor
+Samuel Lorand
+
+GitHub: https://github.com/SamuelloranD
+
+LinkedIn: https://www.linkedin.com/in/samuellorand/
+
+⭐ Gostou do projeto? Deixe uma estrela nos repositórios!
+
+Frontend: https://github.com/SamuelloranD/mini-e-commerce-front
+Backend: https://github.com/SamuelloranD/mini-e-commerce-backk
