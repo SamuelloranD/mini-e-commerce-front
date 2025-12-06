@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Lista de Produtos</h1>
+    <button class="btn btn-primary" routerLink="/produtos/novo">
+      <i class="bi bi-plus-circle"></i> Novo Produto
+    </button>
+  </div>
+
+  <app-produto-tabela 
+    [produtos]="produtos"
+    (editar)="onEditar($event)"
+    (excluir)="onExcluir($event)"
+    (adicionarCarrinho)="onAdicionarCarrinho($event)">
+  </app-produto-tabela>
+</div>

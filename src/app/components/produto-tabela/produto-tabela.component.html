@@ -1,0 +1,43 @@
+<div class="table-responsive">
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td><img src="{{produto.img}}" alt=""
+            width="100px"></td>
+        <td>{{ produto.name }}</td>
+        <td>{{ formatarPreco(produto.price) }}</td>
+        <td>{{ produto.description }}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <button class="btn btn-warning btn-sm me-1" 
+                    (click)="onEditar(produto)"
+                    title="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+            
+            <button class="btn btn-danger btn-sm me-1" 
+                    (click)="onExcluir(produto)"
+                    title="Excluir">
+              <i class="bi bi-trash"></i>
+            </button>
+            
+            <button class="btn btn-success btn-sm" 
+                    (click)="onAdicionarCarrinho(produto)"
+                    title="Adicionar ao Carrinho">
+              <i class="bi bi-cart-plus"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
