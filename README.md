@@ -61,7 +61,7 @@ export const environment = {
 };
 ```
 
-## 🧪 Testes Unitários - BÔNUS CONQUISTADO 🏆
+## 🧪 Testes Unitários
 Resultados:
 ✅ 33 testes unitários implementados
 ✅ 86.84% de cobertura de código
